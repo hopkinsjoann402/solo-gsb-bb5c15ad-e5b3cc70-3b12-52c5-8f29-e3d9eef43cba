@@ -13,6 +13,7 @@ import { displayCluster, formatCodepoint } from '../lib/grapheme';
 import type { FailureScenario } from '../lib/resilience';
 import ClusterTable, { type ClusterFilter } from './ClusterTable';
 import ResiliencePanel from './ResiliencePanel';
+import BaselineCompare from './BaselineCompare';
 
 interface ResultsPanelProps {
   clusters: ClusterAudit[];
@@ -78,9 +79,15 @@ export default function ResultsPanel(props: ResultsPanelProps) {
 
   if (!hasText) {
     return (
-      <div className="empty-state">
-        <div className="empty-icon">⌨️</div>
-        <p>在左侧粘贴待渲染文本，审计结果将实时显示在这里。</p>
+      <div className="results">
+        <div className="empty-state">
+          <div className="empty-icon">⌨️</div>
+          <p>在左侧粘贴待渲染文本，审计结果将实时显示在这里。</p>
+        </div>
+        <section className="block">
+          {/* 固定挂载：清空文本时也不丢失已导入的基线 */}
+          <BaselineCompare clusters={clusters} validFonts={validFonts} />
+        </section>
       </div>
     );
   }
@@ -182,6 +189,10 @@ export default function ResultsPanel(props: ResultsPanelProps) {
           />
         </section>
       )}
+
+      <section className="block">
+        <BaselineCompare clusters={clusters} validFonts={validFonts} />
+      </section>
 
       <section className="block">
         <ClusterTable clusters={clusters} validFonts={validFonts} filter={filter} onFilterChange={setFilter} />

@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:baseline": "esbuild scripts/test-baseline.ts --bundle --platform=node --format=cjs --outfile=scripts/.test-baseline.cjs && node scripts/.test-baseline.cjs"
   },
   "dependencies": {
     "react": "^18.3.1",
