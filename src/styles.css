@@ -923,3 +923,156 @@ code {
   color: var(--muted);
   font-size: 12px;
 }
+
+/* ---- 基线对比 ---- */
+.baseline-compare {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cmp-error {
+  margin-bottom: 0;
+}
+
+.cmp-empty-hint {
+  padding: 10px 12px;
+  border: 1px dashed var(--border);
+  border-radius: 9px;
+}
+
+.cmp-baseline-meta {
+  word-break: break-all;
+}
+
+.cmp-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+}
+
+@media (max-width: 640px) {
+  .cmp-stat-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.cmp-stat {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--panel-2);
+  text-align: center;
+}
+
+.cmp-stat-value {
+  font-size: 18px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.cmp-stat-label {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.cmp-stat.ok .cmp-stat-value {
+  color: var(--ok);
+}
+
+.cmp-stat.bad .cmp-stat-value {
+  color: var(--bad);
+}
+
+.cmp-filter {
+  margin: 0;
+}
+
+.cmp-scroll {
+  max-height: 460px;
+}
+
+.cmp-table td,
+.cmp-table th {
+  vertical-align: middle;
+}
+
+.cmp-side {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cmp-side .glyph-cell {
+  min-width: 28px;
+  font-size: 16px;
+}
+
+.cmp-side-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.cmp-empty {
+  color: var(--muted);
+}
+
+.cmp-arrow {
+  text-align: center;
+  color: var(--muted);
+  width: 26px;
+}
+
+.cmp-cell-ins {
+  background: rgba(139, 148, 158, 0.06);
+}
+
+.cmp-cell-del {
+  background: rgba(139, 148, 158, 0.06);
+}
+
+.cmp-row-degraded {
+  background: var(--bad-soft);
+}
+
+.cmp-row-indel {
+  background: rgba(88, 166, 255, 0.05);
+}
+
+.cmp-change {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  white-space: nowrap;
+  border: 1px solid var(--border);
+  background: var(--panel-2);
+  color: var(--muted);
+}
+
+.cmp-change.cmp-new-missing,
+.cmp-change.cmp-inserted {
+  background: var(--bad-soft);
+  color: var(--bad);
+  border-color: rgba(248, 81, 73, 0.4);
+}
+
+.cmp-change.cmp-fixed-missing {
+  background: var(--ok-soft);
+  color: var(--ok);
+  border-color: rgba(63, 185, 80, 0.4);
+}
+
+.cmp-change.cmp-font-changed,
+.cmp-change.cmp-coverage-changed {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-color: rgba(88, 166, 255, 0.4);
+}
+
+.cmp-change.cmp-deleted {
+  background: var(--panel);
+  color: var(--muted);
+}
